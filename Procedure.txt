@@ -1,0 +1,25 @@
+create table stud(no number(5),name varchar2(20),marks number(5));
+create table ress(no number(5),name varchar2(20),class varchar2(30));
+
+create procedure final22(no number,name varchar,marks number)
+as
+class varchar(20);
+begin
+if(marks<=1500 and marks>=999)then
+class:='Distinction';
+elsif(marks<=998 and marks>=899)then
+class:='First Class';
+elsif(marks<=898 and marks>=700)then
+class:='Pass';
+else
+class:='Fail';
+end if;
+
+
+insert into stud values(no,name,marks);
+insert into ress values(no,name,class);
+end;
+/
+
+exec final22(10,'Abhi',1454);
+exec final22(15,'Kunal',900);

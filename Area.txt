@@ -1,0 +1,18 @@
+create table Areas(Radius number(5) unique, Area number(14,2) unique);
+DECLARE 
+PI CONSTANT number(4,2) := 3.14; 
+Radius number(5) :=5; 
+Area number(14,2); 
+ 
+BEGIN 
+Radius:= 5; 
+while Radius <=9 
+LOOP 
+Area:= PI*(Radius*Radius); 
+insert into Areas values(Radius, Area); 
+Radius:=Radius +1; 
+END LOOP; 
+END;
+/
+
+select * from Areas;

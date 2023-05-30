@@ -1,0 +1,27 @@
+create table lib11(bid number(5),bname varchar2(30),author varchar2(30));
+
+insert into lib11 values(100,'m3','Abhi');
+insert into lib11 values(110,'cns','Anuj');
+insert into lib11 values(120,'spos','Kunal');
+insert into lib11 values(130,'iot','Rohit');
+
+create table lib11_audit(bid number(5),bname varchar2(30),author varchar2(30));
+create trigger trigg
+before update or delete on lib11
+for each row
+begin
+insert into lib11_audit values(:old.bid,:old.bname,:old.author);
+end
+/
+
+update lib11 set bname='idk' where bid=110;
+
+delete from lib11 where author='Kunal';
+
+select *from lib11;
+select *from lib11_audit;
+
+---------------------------------------------------------------------------------------
+
+
+
